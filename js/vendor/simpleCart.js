@@ -1003,7 +1003,7 @@
 
 					// build basic form options
 					var data = {
-							  amount			: simpleCart.grandTotal()
+							  amount			: parseInt(simpleCart.grandTotal(),10)*100
 							, currency	    	: simpleCart.currency().code
 							, return_url		: "http://127.0.0.1/thankyou.php"
 							, cancel_url		: "http://127.0.0.1/sorry.php"

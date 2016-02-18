@@ -7,10 +7,10 @@ session_start();
 
 if (isset($_POST['register-submit']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm-password'])) {
 	if ($_POST['password'] == $_POST['confirm-password']) {
-		$stmt = $dbh->prepare("SELECT email, FROM users WHERE email = ?");
+		$stmt = $dbh->prepare("SELECT email FROM users WHERE email = ?");
 		$stmt->bind_param("s", $_POST['email']);
 		$stmt->execute();
-		$stmt->bind_result($result[]);
+		$stmt->bind_result($result);
 		$stmt->fetch();
 		if ($result > 0) {
 			$stmt->close();
@@ -28,7 +28,7 @@ if (isset($_POST['register-submit']) && isset($_POST['email']) && isset($_POST['
 	 die("Un champ est vide");
 }
 $_SESSION['email'] = $email;
-Header("Location: 127.0.0.1");
+Header("Location: index.php");
 
 function create_user ($dbh, $password, $email) {
 	create_hash($dbh, $password, $email);

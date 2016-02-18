@@ -1,0 +1,12 @@
+CREATE TABLE users (
+  `id` INT(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `email` VARCHAR(120) NOT NULL,
+  `salt` VARCHAR(8) NOT NULL,
+  `password` VARCHAR(40) NOT NULL,
+  `session` VARCHAR(40) DEFAULT NULL,
+  `disabled` TINYINT(1) UNSIGNED DEFAULT 0,
+  `created_dt` DATETIME,
+  `modified_ts` TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  UNIQUE INDEX `uniq_idx` (`email`)
+) ENGINE=InnoDB CHARSET=UTF8;

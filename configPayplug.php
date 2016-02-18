@@ -6,7 +6,7 @@ if (isset($_SESSION['email'])) {
 \Payplug\Payplug::setSecretKey(""); //define payplug live key
 
 $payment = \Payplug\Payment::create(array(
-    'amount'            => $_POST['amount'],
+    'amount'            => intval($_POST['amount']),
     'currency'          => $_POST['currency'],
     'customer'          => array(
         'email'             => $_SESSION['email'],
